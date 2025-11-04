@@ -15,7 +15,7 @@ PLAYER_VEL = 5
 window = pygame.display.set_mode((WIDTH, HEIGHT))
 
 
-class Player(pygame.sprite.sprite):
+class Player(pygame.sprite.Sprite):
   COLOR = (255, 0, 0)
   
   def __init__(self, x, y, width, height):
@@ -35,17 +35,18 @@ class Player(pygame.sprite.sprite):
       self.direction = "left"
       self.animation_count = 0 
   
-  def move_right(self, vel)
-  self.x_vel = vel
-  if self.direction != "right":
-    self.direction = "right"
-    self.animation_count = 60
+  def move_right(self, vel):
+    self.x_vel = vel
+    if self.direction != "right":
+      self.direction = "right"
+      self.animation_count = 60
     
   def loop(self, fps):
     self.move(self.x_vel, self.y_vel)
     
   def draw(self, win):
     pygame.draw.rect(win, self.COLOR, self.rect)
+    
 
 def get_background(name):
     image = pygame.image.load(join("assets", "Background", name))
@@ -59,9 +60,10 @@ def get_background(name):
         
     return tiles, image
  # i didntmknow how to draw the bg and i got syntax error
-def draw(window, background, bg_image):
+def draw(window, background, bg_image, player):
     for tile in background:
         window.blit(bg_image, tile)
+    player.draw(window)
     pygame.display.update()
   
 def main(window):
@@ -78,7 +80,7 @@ def main(window):
             if event.type == pygame.QUIT:
                 run = False
                 break
-        draw(window, background, bg_image)
+        draw(window, background, bg_image, player)
     pygame.quit()
     quit()
 
