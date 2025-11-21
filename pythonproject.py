@@ -165,15 +165,36 @@ def paperRedstone():
   
   dispense()
 def armorGame():
+  
+  
+  hel = ("Helmet", "helmet", "HELMET", "H", "h")
+  chestplate = ("Chestplate", "chestplate", "c", "C", "CHESTPLATE")
+  leggings = ("leggings", "Leggings", "LEGGINGS", "L", "l")
+  boots = ("Boots", "boots", "BOOTS", "b", "B")
+  armor = ("helmet", "chestplate", "leggings", "boots")
+  
+  
+  shuffle = armor[random.randint(0, 3)]
+  print(shuffle)
+  
+  
+  
+  
+  
   money = 50000
   current_bal = money
   print(f"This is armorGame, your goal is to make a million dollars, You have ${current_bal}")
-  r = True
-  while r:
-    bet = int(input("Enter Bet: "))
-  while bet > money:
+  bet = int(input("Enter Bet: "))
+  while (bet > money):
     print(f"You only have ${money}!")
     bet = int(input("Enter bet again: "))
-    choice = input("Choose armor peice: ")
-    
+  r = True
+  while r:
+      choice = input("Choose armor peice: ")
+      if (shuffle == choice):
+        money -= bet
+        money += bet * 4
+        print(f"YOU WIN!! 4x You have {money}")
+  
+  
 armorGame()
