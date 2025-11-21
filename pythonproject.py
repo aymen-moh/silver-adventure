@@ -40,13 +40,6 @@ def chicken():
           
         choiceSys()
       choicenMoneySys()
-
-
-
-
-
-
-# it really took time to think about how will i make russian roulette :broken_heart:
 def russian_roulette():
   print("One of the nine bullet chambers has a bullet in it, DONT DIE.")
   rolls_player = 1
@@ -99,10 +92,43 @@ def russian_roulette():
           print("Click! empty chamber....")
       if bothAlive:
         goingFirst = "You"
+def hilo(): # this include no code from gess.py!
+  randomNum = random.randint(1, 13)
+  choices = ["h", "l", "H", "L", "Higher", "Lower", "HIGHER", "LOWER", "higher", "lower"] #
+  while True:
+    UD = [0, 1]
       
-
-  
-  
-  
-  
-russian_roulette()
+    
+    choice = input(f"{randomNum} Higher Or Lower? ")
+    last = randomNum
+    while True:
+      if (choice == "higher") or (choice == "Higher") or (choice == "HIGHER") or (choice == "h") or (choice == "H"):
+        randomNum = random.randint(1, 13)
+        if (randomNum == last):
+          PUD = UD[random.randint(0, 1)]
+          if (PUD == 0):
+            randomNum -= 1
+          if (PUD == 1):
+            randomNum += 1
+        elif (randomNum < last):
+          print(f"You Lost! it was {randomNum}")
+          break
+        else:
+          print(f"You Won! it was {randomNum}")
+          break
+      elif (choice == "lower") or (choice == "Lower") or (choice == "LOWER") or (choice == "l") or (choice == "L"):
+        randomNum = random.randint(1, 13)
+        if (randomNum == last) and not (randomNum == 13) and not (randomNum == 1):
+          PUD = UD[random.randint(0, 1)]
+          if (PUD == 0):
+            randomNum -= 1
+          if (PUD == 1):
+            randomNum += 1
+        elif (randomNum > last):
+          print(f"You Lost! it was {randomNum}")
+          break
+        else:
+          print(f"You Won! it was {randomNum}")
+          break
+      while choice not in choices:
+        choice = input("Please Enter a Valid Choice: higher, lower, Higher, Lower, HIGHER, LOWER, H, L, h, l ")
