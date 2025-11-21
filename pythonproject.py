@@ -1,7 +1,7 @@
 import random, math, time
 def chicken():
   multiplier = 1
-  # i am trying to make the money system universal so i dont waste time - decided to make other stuff than gambling
+  # i am trying to make the money system universal so i dont waste time - decided to make other stuff than gambling 
   money = 200
   mulsum = 0
   chance = 0
