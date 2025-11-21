@@ -132,3 +132,48 @@ def hilo(): # this include no code from gess.py!
           break
       while choice not in choices:
         choice = input("Please Enter a Valid Choice: higher, lower, Higher, Lower, HIGHER, LOWER, H, L, h, l ")
+def paperRedstone():
+  Redstone = False
+  Paper = False
+  while True:
+    choice = input("Choose Paper (P) or Redstone (R) or Help (H)")
+    if (choice == "P") or (choice == "p"):
+      Paper = True
+      break
+    elif (choice == "R") or (choice == "r"):
+      Redstone = True
+      break
+    elif (choice == "h") or (choice == "H"):
+      print("Paper game is a minecraft inspered game where there are 2 droppers \n with paper and redstone named numbers that are 1 to 9, \n a lever is placed to fire both droppers and the higher number wins, this \n game was inspired by it") # Sorry for poor quality explanation its almost 5 am
+    else:
+      print("Please Enter P, R or H")
+  def dispense():
+    DP = random.randint(1, 9)  # Paper dispenser 
+    DR = random.randint(1, 9)   # Redstone dispenser
+    if Paper:
+      if DP > DR:
+        print("You Won!")
+      else:
+        print("You Lost!")
+    if Redstone:
+      if DP < DR:
+        print("You Won!")
+      else:
+        print("You Lost!")
+  
+  
+  
+  dispense()
+def armorGame():
+  money = 50000
+  current_bal = money
+  print(f"This is armorGame, your goal is to make a million dollars, You have ${current_bal}")
+  r = True
+  while r:
+    bet = int(input("Enter Bet: "))
+  while bet > money:
+    print(f"You only have ${money}!")
+    bet = int(input("Enter bet again: "))
+    choice = input("Choose armor peice: ")
+    
+armorGame()
