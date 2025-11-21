@@ -41,57 +41,118 @@ def chicken():
         choiceSys()
       choicenMoneySys()
 def russian_roulette():
-  print("One of the nine bullet chambers has a bullet in it, DONT DIE.")
-  rolls_player = 1
-  while (rolls_player >= 9) or (rolls_player <= 0):
-    rolls_player = int(input("You can only pick 1-8! ")) 
+  def oneP():
+    print("One of the nine bullet chambers has a bullet in it, DONT DIE.")
+    rolls_player = 1
+    while (rolls_player >= 9) or (rolls_player <= 0):
+      rolls_player = int(input("You can only pick 1-8! ")) 
   
-  bullet_pos = random.randint(1, 9)
-  chance_of_bullet = 0.11
-  chance_of_bullet = (chance_of_bullet * rolls_player)
-  current_chamber = 0
-  opponent_rolls = 0
-  GFCR = ["You", "Opponent"] # it doesnt really matter what does this mean because i will use it once, but if you want to know it stands for going first chance rqndomizer
-  goingFirst = GFCR[random.randint(0, 1)]
-  bothAlive = True
-  while bothAlive:
-    if (goingFirst == "You"):
-      rolls_player = int(input("\n \n \nhow many times you want to pull the lever? \n ")) 
-      for i in range(rolls_player):
-        time.sleep(1)
-        current_chamber += 1
-        chance_of_bullet += 0.11
-        if (current_chamber != bullet_pos):
-          print("CLICK! empty chamber")
-        else:
-          print("BOOM! You Died!")
-          rolls_player = 0
-          bothAlive = False
-          break
-      if bothAlive:
-        goingFirst = "Opponent"
-    if (goingFirst == "Opponent"):
-      if (chance_of_bullet < 0.12):
-        opponent_rolls = random.randint(1, 3)
-        print(f"\n \n \nOpponent chooses to go {opponent_rolls} times \n ")
-      elif (chance_of_bullet < 0.34):
-        opponent_rolls = random.randint(1, 2)
-        print(f"\n \n \nOpponent chooses to go {opponent_rolls} times \n ")
-      else: 
-        opponent_rolls = 1
-        print(f"\n \n \nOpponent chooses to go {opponent_rolls} times \n ")
-      for i in range(opponent_rolls):
-        chance_of_bullet += 0.11
-        time.sleep(1)
-        current_chamber += 1
-        if (current_chamber == bullet_pos):
-          print("BOOM!! Opponent Loses")
-          bothAlive = False
-          break
-        else:
-          print("Click! empty chamber....")
-      if bothAlive:
-        goingFirst = "You"
+    bullet_pos = random.randint(1, 9)
+    chance_of_bullet = 0.11
+    chance_of_bullet = (chance_of_bullet * rolls_player)
+    current_chamber = 0
+    opponent_rolls = 0
+    GFCR = ["You", "Opponent"] # it doesnt really matter what does this mean because i will use it once, but if you want to know it stands for going first chance rqndomizer
+    goingFirst = GFCR[random.randint(0, 1)]
+    bothAlive = True
+    while bothAlive:
+      if (goingFirst == "You"):
+        rolls_player = int(input("\n \n \nhow many times you want to pull the lever? \n ")) 
+        for i in range(rolls_player):
+          time.sleep(1)
+          current_chamber += 1
+          chance_of_bullet += 0.11
+          if (current_chamber != bullet_pos):
+            print("CLICK! empty chamber")
+          else:
+            print("BOOM! You Died!")
+            rolls_player = 0
+            bothAlive = False
+            break
+        if bothAlive:
+          goingFirst = "Opponent"
+      if (goingFirst == "Opponent"):
+        if (chance_of_bullet < 0.12):
+          opponent_rolls = random.randint(1, 3)
+          print(f"\n \n \nOpponent chooses to go {opponent_rolls} times \n ")
+        elif (chance_of_bullet < 0.34):
+          opponent_rolls = random.randint(1, 2)
+          print(f"\n \n \nOpponent chooses to go {opponent_rolls} times \n ")
+        else: 
+          opponent_rolls = 1
+          print(f"\n \n \nOpponent chooses to go {opponent_rolls} times \n ")
+        for i in range(opponent_rolls):
+          chance_of_bullet += 0.11
+          time.sleep(1)
+          current_chamber += 1
+          if (current_chamber == bullet_pos):
+            print("BOOM!! Opponent Loses")
+            bothAlive = False
+            break
+          else:
+            print("Click! empty chamber....")
+        if bothAlive:
+          goingFirst = "You"
+  
+  
+  
+  def twoP(): 
+    P1N = input("Enter Player 1 name")              
+    P2N = input("Enter Player 2 name")              #
+    sPlaying = True            
+    bullet = random.randint(1, 9)
+    cChamber = 0 
+    pList = (1, 2) 
+    cPlaying = pList[random.randint(0, 1)] 
+    acceptable_choices = (1, 2, 3, 4, 5, 6, 7, 8)
+    print(cPlaying)
+    while sPlaying:
+      while (cPlaying == 1):
+        P1C = int(input(f"How many times would ({P1N}) like to fire?"))
+        while P1C not in acceptable_choices:
+          P1C = int(input("Please Enter Numbers 1-8! "))
+        
+        for i in range(P1C):
+          time.sleep(0.65)
+          cChamber += 1
+          if cChamber == bullet:
+            print(f"{P1N} died ;(")
+            sPlaying = False
+            break
+          else:
+            print("CLICK! Empty Chamber")
+        cPlaying = 2
+      while (cPlaying == 2):
+        P2C = int(input(f"How many times would ({P2N}) like to fire?"))
+        while P2C not in acceptable_choices:
+          P2C = int(input("Please Enter Numbers 1-8! "))
+        
+        for i in range(P2C):
+          time.sleep(0.65)
+          cChamber += 1
+          if (cChamber == bullet):
+            print(f"{P2N} died! ;(")
+            sPlaying = False
+            break
+          else:
+            print("CLICK! Empty Chamber")
+        cPlaying = 1
+
+    
+    
+    
+          
+          
+          
+  twoP()
+russian_roulette()
+          
+          
+          
+          
+          
+          
+          
 def hilo(): # this include no code from gess.py!
   randomNum = random.randint(1, 13)
   choices = ["h", "l", "H", "L", "Higher", "Lower", "HIGHER", "LOWER", "higher", "lower"] #
@@ -195,6 +256,6 @@ def armorGame():
         money -= bet
         money += bet * 4
         print(f"YOU WIN!! 4x You have {money}")
+
   
   
-armorGame()
