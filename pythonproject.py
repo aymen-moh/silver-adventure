@@ -1,4 +1,4 @@
-import random, math, time
+import random, math, time, threading
 def chicken():
   multiplier = 1
   # i am trying to make the money system universal so i dont waste time - decided to make other stuff than gambling 
@@ -93,9 +93,6 @@ def russian_roulette():
             print("Click! empty chamber....")
         if bothAlive:
           goingFirst = "You"
-  
-  
-  
   def twoP(): 
     P1N = input("Enter Player 1 name")              
     P2N = input("Enter Player 2 name")              #
@@ -137,22 +134,14 @@ def russian_roulette():
           else:
             print("CLICK! Empty Chamber")
         cPlaying = 1
-
-    
-    
-    
-          
-          
-          
-  twoP()
-russian_roulette()
-          
-          
-          
-          
-          
-          
-          
+  c = int(input("Number of Players: "))
+  while True:
+    if c == 1:
+      oneP()
+    elif c == 2:
+      twoP()
+    else:
+      c = int(input("Please choose ohe or two players"))
 def hilo(): # this include no code from gess.py!
   randomNum = random.randint(1, 13)
   choices = ["h", "l", "H", "L", "Higher", "Lower", "HIGHER", "LOWER", "higher", "lower"] #
@@ -218,9 +207,9 @@ def paperRedstone():
         print("You Lost!")
     if Redstone:
       if DP < DR:
-        print("You Won!")
+        print(f"Redstone: {DR}, Paper: {DP}, You Won!")
       else:
-        print("You Lost!")
+        print(f"Redstone: {DR}, Paper: {DP}, You Lost!")
   
   
   
@@ -236,7 +225,7 @@ def armorGame():
   
   
   shuffle = armor[random.randint(0, 3)]
-  print(shuffle)
+  
   
   
   
@@ -257,5 +246,21 @@ def armorGame():
         money += bet * 4
         print(f"YOU WIN!! 4x You have {money}")
 
+def dialog():
   
-  
+  i = input("Welcome to PythonPr! \n \nplease enter one of the following commands! \n \n/chicken - chicken road game! \n/russian - russian roulette game (9 barrels \n/hilo - 1-13, guess if the next number will be higher or lower! \n/paperRedstone - minecraft inspired game! \n/armorGame - another minecraft game where a dispenser sits near and 1 out of 4 times you will win! (4x)")
+  while True:
+    if (i == "/chicken"):
+      chicken()
+    if (i == "/russian"):
+      russian_roulette()
+    if (i == "/hilo"):
+      hilo()
+    if (i == "/paperRedstone") or (i == "/paperredstone"):
+      paperRedstone()
+    if (i == "/armorGame"):
+      armorGame()
+    
+    
+    
+dialog()
